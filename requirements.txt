@@ -1,0 +1,10 @@
+Django==5.2.2
+djangorestframework==3.14.0
+django-crispy-forms==2.1
+crispy-bootstrap5==0.7
+Pillow==10.1.0
+python-dateutil==2.8.2
+requests==2.31.0
+django-allauth==0.59.0
+django-environ==0.11.2
+qrcode==7.4.2 
