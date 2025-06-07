@@ -13,4 +13,5 @@ urlpatterns = [
     path('profile/', views.ProfileView.as_view(), name='profile'),
     path('profile/fitness-goals/', views.fitness_goals_view, name='fitness_goals'),
     path('profile/activity-history/', views.activity_history_view, name='activity_history'),
+    path('profile/edit/', views.edit_profile_view, name='edit_profile'),
 ] 
