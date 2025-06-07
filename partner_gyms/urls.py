@@ -12,6 +12,7 @@ urlpatterns = [
     path('my-gyms/', views.my_gyms_view, name='my_gyms'),
     path('add-membership/<int:gym_id>/', views.add_gym_membership_view, name='add_membership'),
     path('remove-membership/<int:gym_id>/', views.remove_gym_membership_view, name='remove_membership'),
+    
     path('qr-code/<int:gym_id>/', views.gym_qr_code_view, name='qr_code'),
     
     # Gym Visits
