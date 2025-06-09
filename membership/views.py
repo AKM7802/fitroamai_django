@@ -6,6 +6,7 @@ from django.http import JsonResponse
 from django.contrib import messages
 from .models import MembershipPlan, UserMembership, Payment, BillingInfo
 
+
 # Membership Plan Views
 def membership_plans_view(request):
     """
