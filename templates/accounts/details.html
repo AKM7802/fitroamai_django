@@ -1,0 +1,79 @@
+{% extends 'accounts/base.html' %}
+
+{% block title %}Update Profile Details - {{ user.username }}{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <h2 class="text-center mb-4">Update Profile Details</h2>
+    
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="phone_number">Phone Number</label>
+            <input type="tel" name="phone_number" id="phone_number" class="form-control" 
+                   value="{{ user.phone_number|default:'' }}">
+        </div>
+        <div class="form-group">
+            <label for="date_of_birth">Date of Birth</label>
+            <input type="date" name="date_of_birth" id="date_of_birth" class="form-control"
+                   value="{{ user.date_of_birth|date:'Y-m-d'|default:'' }}">
+        </div>
+        <div class="form-group">
+            <label for="height">Height (cm)</label>
+            <input type="number" step="0.1" name="height" id="height" class="form-control"
+                   value="{{ user.height|default:'' }}">
+        </div>
+        <div class="form-group">
+            <label for="weight">Weight (kg)</label>
+            <input type="number" step="0.1" name="weight" id="weight" class="form-control"
+                   value="{{ user.weight|default:'' }}">
+        </div>
+        <div class="form-group">
+            <label for="fitness_level">Fitness Level</label>
+            <select name="fitness_level" id="fitness_level" class="form-control">
+                <option value="">Select your fitness level</option>
+                <option value="beginner" {% if user.fitness_level == 'beginner' %}selected{% endif %}>Beginner</option>
+                <option value="intermediate" {% if user.fitness_level == 'intermediate' %}selected{% endif %}>Intermediate</option>
+                <option value="advanced" {% if user.fitness_level == 'advanced' %}selected{% endif %}>Advanced</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="fitness_goals">Fitness Goals</label>
+            <textarea name="fitness_goals" id="fitness_goals" class="form-control" rows="3">{{ user.fitness_goals|default:'' }}</textarea>
+        </div>
+        <div class="form-group">
+            <label for="preferred_workout_type">Preferred Workout Type</label>
+            <input type="text" name="preferred_workout_type" id="preferred_workout_type" class="form-control"
+                   value="{{ user.preferred_workout_type|default:'' }}" placeholder="e.g., Cardio, Strength Training, Yoga">
+        </div>
+        <div class="form-group">
+            <label for="workout_frequency">Workout Frequency (days per week)</label>
+            <input type="number" name="workout_frequency" id="workout_frequency" class="form-control" min="0" max="7"
+                   value="{{ user.workout_frequency|default:'' }}">
+        </div>
+        <button type="submit" class="btn-submit">Update Details</button>
+    </form>
+    
+    <div class="text-center mt-3">
+        <a href="{% url 'accounts:profile' %}" class="btn-link">Back to Profile</a>
+    </div>
+</div>
+
+<style>
+    .btn-link {
+        color: #007bff;
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        transition: all 0.3s;
+    }
+    .btn-link:hover {
+        background-color: #f8f9fa;
+        text-decoration: none;
+    }
+    textarea.form-control {
+        resize: vertical;
+        min-height: 100px;
+    }
+</style>
+{% endblock %} 
